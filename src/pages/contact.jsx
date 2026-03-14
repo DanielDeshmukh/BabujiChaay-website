@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { FaFacebook, FaInstagramSquare, FaTwitter, FaYoutube, FaPhoneAlt } from "react-icons/fa";
+import { SiGooglemaps } from "react-icons/si";
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,22 +23,30 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
     console.log("Form submitted:", formData);
+    
     setSubmitted(true);
+    
+    // WhatsApp Integration
+    const whatsappMessage = `Hello Babuji Chaay, I would like to inquire about: ${formData.subject}\n\nMy details:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\n\nMessage:\n${formData.message}`;
+    const whatsappLink = `https://wa.me/919076165666?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    window.open(whatsappLink, "_blank");
+
+    // Reset Form
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     setTimeout(() => setSubmitted(false), 3000);
   };
 
   const contactInfo = [
     {
-      icon: "📍",
+      icon: <SiGooglemaps size={22} />,
       title: "Address",
       details: ["K D Empire, Kanakia Park, Mira Road East, Mira Bhayandar, Maharashtra 401107, India"],
-      link: "https://www.google.com/maps/search/?api=1&query=K%20D%20Empire%2C%20Kanakia%20Park%2C%20Mira%20Road%20East%2C%20Mira%20Bhayandar%2C%20Maharashtra%20401107%2C%20India"
+      link: "https://maps.google.com/?q=Babuji+Chaay+Mira+Road"
     },
     {
-      icon: "📞",
+      icon: <FaPhoneAlt size={22} />,
       title: "Phone",
       details: ["+91 90761 65666"],
       link: "tel:+919076165666"
@@ -56,36 +65,36 @@ export default function Contact() {
     }
   ];
 
+  // Refactored socialLinks with explicit sizes for the icons
   const socialLinks = [
-    { icon: "f", name: "Facebook", url: "https://facebook.com" },
-    { icon: "in", name: "Instagram", url: "https://instagram.com" },
-    { icon: "tw", name: "Twitter", url: "https://twitter.com" },
-    { icon: "yt", name: "YouTube", url: "https://youtube.com" }
+    { icon: <FaFacebook size={22} />, name: "Facebook", url: "https://facebook.com" },
+    { icon: <FaInstagramSquare size={22} />, name: "Instagram", url: "https://instagram.com" },
+    { icon: <FaTwitter size={22} />, name: "Twitter", url: "https://twitter.com" },
+    { icon: <FaYoutube size={22} />, name: "YouTube", url: "https://youtube.com" }
   ];
 
   return (
     <main className="pt-24 min-h-screen bg-accent">
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-b from-primary to-primary py-16 text-accent text-center">
-        <div className="container-max">
+      <section className="bg-primary py-16 text-accent text-center">
+        <div className="container-max px-4">
           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Get In Touch</h1>
-          <p className="text-lg text-accent text-opacity-90 max-w-2xl mx-auto">
+          <p className="text-lg text-accent/90 max-w-2xl mx-auto">
             We'd love to hear from you! Whether you have questions, want to visit us, or are interested in franchise opportunities.
           </p>
         </div>
       </section>
 
       {/* CONTACT INFORMATION CARDS */}
-      <section className="section-padding bg-accent">
-        <div className="container-max">
+      <section className="py-16 bg-accent">
+        <div className="container-max px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {contactInfo.map((info, idx) => (
               <div 
                 key={idx}
-                className="card p-6 text-center hover:shadow-hover transition-all transform hover:-translate-y-2 animate-fadeInUp"
-                style={{ animationDelay: `${idx * 0.05}s` }}
+                className="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-hover transition-all transform hover:-translate-y-2"
               >
-                <div className="text-5xl mb-4">{info.icon}</div>
+                <div className="text-5xl mb-4 leading-none">{info.icon}</div>
                 <h3 className="text-xl font-bold text-primary mb-3">{info.title}</h3>
                 <div className="space-y-1 mb-4">
                   {info.details.map((detail, i) => (
@@ -97,7 +106,7 @@ export default function Contact() {
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-secondary font-semibold hover:underline text-sm"
+                    className="text-secondary font-semibold hover:underline text-sm inline-block"
                   >
                     Open →
                   </a>
@@ -109,16 +118,16 @@ export default function Contact() {
       </section>
 
       {/* MAIN CONTACT SECTION */}
-      <section className="section-padding bg-white">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <section className="py-16 bg-white">
+        <div className="container-max px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* FORM */}
             <div className="animate-slideInLeft">
               <h2 className="text-3xl font-bold text-primary mb-6">Send us a Message</h2>
               
               {submitted && (
-                <div className="mb-6 p-4 bg-green-100 border border-green-500 text-green-700 rounded-lg">
-                  ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+                <div className="mb-6 p-4 bg-green-50 border border-green-500 text-green-700 rounded-lg animate-fadeInSlow">
+                  ✓ Thank you! Redirecting to WhatsApp...
                 </div>
               )}
 
@@ -131,7 +140,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-20 transition"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -145,7 +154,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-20 transition"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -157,7 +166,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-20 transition"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition"
                       placeholder="+91 xxxxx xxxxx"
                     />
                   </div>
@@ -170,7 +179,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-20 transition"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition bg-white"
                   >
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
@@ -189,13 +198,13 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-20 transition resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-secondary focus:ring-2 focus:ring-secondary/20 outline-none transition resize-none"
                     placeholder="Tell us how we can help..."
                   ></textarea>
                 </div>
 
-                <button type="submit" className="btn-primary w-full text-center">
-                  Send Message
+                <button type="submit" className="w-full py-4 bg-primary text-accent font-bold rounded-lg hover:bg-secondary hover:text-primary transition-all duration-300 shadow-md">
+                  Send Message via WhatsApp
                 </button>
               </form>
             </div>
@@ -214,27 +223,27 @@ export default function Contact() {
                 </p>
               </div>
 
-              <div className="bg-primary rounded-xl p-6 text-accent">
-                <h4 className="text-xl font-bold mb-4">Quick Links</h4>
-                <ul className="space-y-3">
+              <div className="bg-primary rounded-xl p-6 text-accent shadow-premium">
+                <h4 className="text-xl font-bold mb-4 border-b border-accent/20 pb-2">Quick Links</h4>
+                <ul className="space-y-4">
                   <li>
-                    <Link to="/menu" className="hover:text-secondary transition-colors flex items-center gap-2">
-                      ☕ Explore Our Menu
+                    <Link to="/menu" className="hover:text-secondary transition-colors flex items-center gap-3">
+                      <span className="text-xl">☕</span> Explore Our Menu
                     </Link>
                   </li>
                   <li>
-                    <Link to="/franchise" className="hover:text-secondary transition-colors flex items-center gap-2">
-                      🚀 Franchise Opportunities
+                    <Link to="/franchise" className="hover:text-secondary transition-colors flex items-center gap-3">
+                      <span className="text-xl">🚀</span> Franchise Opportunities
                     </Link>
                   </li>
                   <li>
-                    <a href="tel:+919076165666" className="hover:text-secondary transition-colors flex items-center gap-2">
-                      📞 Call: +91 90761 65666
+                    <a href="tel:+919076165666" className="hover:text-secondary transition-colors flex items-center gap-3">
+                      <span className="text-xl">📞</span> Call: +91 90761 65666
                     </a>
                   </li>
                   <li>
-                    <a href="mailto:babujichai55@gmail.com" className="hover:text-secondary transition-colors flex items-center gap-2">
-                      ✉️ Email: babujichai55@gmail.com
+                    <a href="mailto:babujichai55@gmail.com" className="hover:text-secondary transition-colors flex items-center gap-3">
+                      <span className="text-xl">✉️</span> Email: babujichai55@gmail.com
                     </a>
                   </li>
                 </ul>
@@ -249,9 +258,10 @@ export default function Contact() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center font-bold hover:bg-primary hover:text-secondary transition-colors transform hover:scale-110"
+                      className="w-12 h-12 bg-secondary text-primary rounded-full flex items-center justify-center hover:bg-primary hover:text-secondary transition-all duration-300 transform hover:scale-110 shadow-sm"
                       title={social.name}
                     >
+                      {/* Icon is rendered here */}
                       {social.icon}
                     </a>
                   ))}
@@ -263,38 +273,20 @@ export default function Contact() {
       </section>
 
       {/* MAP SECTION */}
-      <section className="section-padding bg-gray-100">
-        <div className="container-max">
+      <section className="py-16 bg-gray-50">
+        <div className="container-max px-4">
           <h2 className="text-3xl font-bold text-primary text-center mb-8">Find Us on Map</h2>
-          <div className="w-full h-96 rounded-lg overflow-hidden shadow-premium">
+          <div className="w-full h-96 rounded-2xl overflow-hidden shadow-premium border-4 border-white">
             <iframe
               width="100%"
               height="100%"
               frameBorder="0"
               title="Babuji Chaay Location"
-              src="https://www.google.com/maps?q=K%20D%20Empire%2C%20Kanakia%20Park%2C%20Mira%20Road%20East%2C%20Mira%20Bhayandar%2C%20Maharashtra%20401107%2C%20India&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.7381232814337!2d72.87165037521088!3d19.29373098195511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b03666666667%3A0x6a0c5c4e9c7c4c4!2sBabuji%20Chai!5e0!3m2!1sen!2sin!4v1700000000000"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ QUICK LINKS */}
-      <section className="section-padding bg-accent">
-        <div className="container-max text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-primary mb-6">Have Questions?</h2>
-          <p className="text-gray-700 mb-8">
-            Reach out to us directly. We're always happy to help!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:babujichai55@gmail.com" className="btn-primary text-center">
-              Email Us
-            </a>
-            <a href="tel:+919076165666" className="btn-outline text-center">
-              Call Us
-            </a>
           </div>
         </div>
       </section>

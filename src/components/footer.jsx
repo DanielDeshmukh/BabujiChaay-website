@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import icon from "../assets/icon.png";
 
 export default function Footer() {
@@ -18,49 +19,51 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: "f", name: "Facebook", url: "https://facebook.com" },
-    { icon: "in", name: "Instagram", url: "https://instagram.com" },
-    { icon: "tw", name: "Twitter", url: "https://twitter.com" },
-    { icon: "yt", name: "YouTube", url: "https://youtube.com" }
+    { icon: <FaFacebookF size={18} />, name: "Facebook", url: "https://facebook.com" },
+    { icon: <FaInstagram size={18} />, name: "Instagram", url: "https://instagram.com" },
+    { icon: <FaTwitter size={18} />, name: "Twitter", url: "https://twitter.com" },
+    { icon: <FaYoutube size={18} />, name: "YouTube", url: "https://youtube.com" }
   ];
 
   return (
     <footer className="bg-primary text-accent">
       {/* MAIN FOOTER CONTENT */}
-      <div className="section-padding border-b border-accent border-opacity-20">
-        <div className="container-max">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="py-16 border-b border-accent/10">
+        <div className="container-max px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            
             {/* BRAND SECTION */}
-            <div className="space-y-4">
+            <div className="space-y-6">
               <Link to="/" className="flex items-center gap-3 group">
-                <div className="relative overflow-hidden rounded-lg">
+                <div className="relative overflow-hidden rounded-lg bg-white p-1">
                   <img 
                     src={icon}
                     alt="Babuji Chaay"
-                    className="w-10 h-10 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>
                 <div>
-                  <p className="font-bold text-lg text-accent">Babuji Chaay</p>
-                  <p className="text-xs text-secondary">Brewing Happiness</p>
+                  <p className="font-serif font-bold text-xl text-accent tracking-wide">Babuji Chaay</p>
+                  <p className="text-xs text-secondary font-medium tracking-widest uppercase">Brewing Happiness</p>
                 </div>
               </Link>
-              <p className="text-sm text-accent text-opacity-80 leading-relaxed">
+              <p className="text-sm text-accent/80 leading-relaxed max-w-xs">
                 Authentic Indian chai, premium beverages, and delicious snacks crafted with passion and quality ingredients.
               </p>
             </div>
 
             {/* QUICK LINKS */}
             <div>
-              <h4 className="font-bold text-lg mb-4 text-secondary">Quick Links</h4>
-              <ul className="space-y-2">
+              <h4 className="font-bold text-lg mb-6 text-secondary underline decoration-secondary/30 underline-offset-8">Explore</h4>
+              <ul className="space-y-3">
                 {quickLinks.map((link, idx) => (
                   <li key={idx}>
                     <Link 
                       to={link.path}
-                      className="text-accent hover:text-secondary transition-colors text-sm"
+                      className="text-accent/80 hover:text-secondary transition-all text-sm flex items-center gap-2 group"
                     >
-                      → {link.name}
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity text-secondary">→</span>
+                      {link.name}
                     </Link>
                   </li>
                 ))}
@@ -69,40 +72,31 @@ export default function Footer() {
 
             {/* CONTACT INFO */}
             <div>
-              <h4 className="font-bold text-lg mb-4 text-secondary">Contact</h4>
-              <ul className="space-y-2 text-sm text-accent">
-                <li className="flex items-start gap-2">
-                  <span className="flex-shrink-0">📍</span>
-                  <span>K D Empire, Kanakia Park, Mira Road East, Mira Bhayandar, Maharashtra 401107, India</span>
+              <h4 className="font-bold text-lg mb-6 text-secondary underline decoration-secondary/30 underline-offset-8">Contact Us</h4>
+              <ul className="space-y-4 text-sm text-accent/80">
+                <li className="flex items-start gap-3">
+                  <span className="text-secondary text-lg">📍</span>
+                  <span className="leading-snug">K D Empire, Kanakia Park, Mira Road East, Mumbai, Maharashtra 401107</span>
                 </li>
                 <li>
-                  <a 
-                    href="tel:+919076165666"
-                    className="hover:text-secondary transition-colors flex items-center gap-2"
-                  >
-                    <span>📞</span>
+                  <a href="tel:+919076165666" className="hover:text-secondary transition-colors flex items-center gap-3 group">
+                    <span className="text-secondary text-lg">📞</span>
                     <span>+91 90761 65666</span>
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="mailto:babujichai55@gmail.com"
-                    className="hover:text-secondary transition-colors flex items-center gap-2"
-                  >
-                    <span>✉️</span>
+                  <a href="mailto:babujichai55@gmail.com" className="hover:text-secondary transition-colors flex items-center gap-3 group">
+                    <span className="text-secondary text-lg">✉️</span>
                     <span>babujichai55@gmail.com</span>
                   </a>
-                </li>
-                <li className="pt-2">
-                  <p className="text-xs text-accent text-opacity-80">Mon-Sun: 9AM-11PM</p>
                 </li>
               </ul>
             </div>
 
             {/* FOLLOW US */}
-            <div>
-              <h4 className="font-bold text-lg mb-4 text-secondary">Follow Us</h4>
-              <div className="flex gap-3 flex-wrap mb-6">
+            <div className="space-y-6">
+              <h4 className="font-bold text-lg mb-6 text-secondary underline decoration-secondary/30 underline-offset-8">Follow Our Story</h4>
+              <div className="flex gap-4">
                 {socialLinks.map((social, idx) => (
                   <a
                     key={idx}
@@ -110,72 +104,61 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={social.name}
-                    className="w-10 h-10 bg-secondary text-primary rounded-full flex items-center justify-center font-bold hover:bg-accent hover:text-primary transition-all transform hover:scale-110"
+                    className="w-10 h-10 border border-secondary/30 text-secondary rounded-full flex items-center justify-center hover:bg-secondary hover:text-primary transition-all duration-300 transform hover:-translate-y-1"
                   >
                     {social.icon}
                   </a>
                 ))}
               </div>
-
-              <div className="bg-accent bg-opacity-10 rounded-lg p-4">
-                <p className="text-xs font-semibold text-secondary mb-2">Newsletter</p>
-                <p className="text-xs text-accent text-opacity-80">Subscribe for updates & special offers</p>
+              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
+                <p className="text-xs font-bold text-secondary uppercase tracking-tighter mb-1">Newsletter</p>
+                <p className="text-xs text-accent/60">Subscribe for updates & special offers.</p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
       {/* BOTTOM SECTION */}
-      <div className="py-8">
-        <div className="container-max">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+      <div className="py-8 bg-black/20">
+        <div className="container-max px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* COPYRIGHT */}
-            <div className="text-center md:text-left">
-              <p className="text-sm text-accent text-opacity-80">
+            <div className="order-3 md:order-1 text-center md:text-left">
+              <p className="text-xs text-accent/50">
                 © {currentYear} Babuji Chaay. All rights reserved.
               </p>
             </div>
 
             {/* CENTER TEXT */}
-            <div className="text-center">
-              <p className="text-sm font-semibold text-secondary italic">
+            <div className="order-1 md:order-2 text-center">
+              <p className="text-sm font-serif italic text-secondary/80">
                 "Brewing Happiness • Fresh chai, fresh smiles"
               </p>
             </div>
 
             {/* LEGAL LINKS */}
-            <div className="text-center md:text-right space-x-4">
+            <div className="order-2 md:order-3 flex gap-4">
               {legalLinks.map((link, idx) => (
                 <a 
                   key={idx}
                   href={link.path}
-                  className="text-xs text-accent text-opacity-80 hover:text-secondary transition-colors inline-block"
+                  className="text-xs text-accent/50 hover:text-secondary transition-colors"
                 >
                   {link.name}
-                  {idx < legalLinks.length - 1 && " •"}
                 </a>
               ))}
             </div>
           </div>
-
-          {/* DIVIDER */}
-          <div className="mt-8 pt-8 border-t border-accent border-opacity-20">
-            <p className="text-center text-xs text-accent text-opacity-70">
-              Made with ❤️ for coffee and chai lovers everywhere
-            </p>
+          
+          <div className="mt-8 text-center">
+             <p className="text-[10px] text-accent/30 uppercase tracking-[0.2em]">
+                Made with ❤️ in India
+             </p>
           </div>
         </div>
       </div>
-
-      {/* BACK TO TOP BUTTON - Could be added dynamically */}
-      <style>{`
-        @media (min-width: 768px) {
-          footer a:hover {
-            text-decoration: none;
-          }
-        }
-      `}</style>
     </footer>
   );
 }
