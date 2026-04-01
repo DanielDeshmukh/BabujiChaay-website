@@ -275,9 +275,6 @@ export default function Menu() {
             >
               Email for Availability
             </a>
-            <Link to="/contact" className="btn-outline px-8 py-4 text-center text-base font-bold">
-              Visit the Store
-            </Link>
           </div>
         </div>
       </section>

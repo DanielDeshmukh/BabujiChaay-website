@@ -9,7 +9,7 @@ import {
   Star,
   UtensilsCrossed
 } from "lucide-react";
-import picture from "../assets/picture.png";
+import picture from "../assets/Black Tulsi Chaay.jpg";
 
 const goldIconClass = "text-[var(--gold-accent)]";
 const featureIconProps = { size: 38, strokeWidth: 1.5, className: goldIconClass };
@@ -247,7 +247,6 @@ export default function Home() {
               Get in Touch
             </Link>
             <a href="tel:+919076165666" className="btn-outline inline-flex items-center justify-center gap-2 text-center">
-              <Phone {...inlineIconProps} />
               Call: +91 90761 65666
             </a>
           </div>

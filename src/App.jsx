@@ -8,6 +8,7 @@ import Home from "./pages/home";
 import Menu from "./pages/menu";
 import Franchise from "./pages/franchise";
 import Contact from "./pages/contact";
+import LegalPage from "./pages/LegalPage";
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -27,6 +28,7 @@ function App() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/franchise" element={<Franchise />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/legal" element={<LegalPage />} />
       </Routes>
 
       <Footer />

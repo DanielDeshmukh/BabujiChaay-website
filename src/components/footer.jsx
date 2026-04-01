@@ -30,9 +30,9 @@ export default function Footer() {
   ];
 
   const legalLinks = [
-    { name: "Privacy Policy", path: "#" },
-    { name: "Terms & Conditions", path: "#" },
-    { name: "Return Policy", path: "#" }
+    { name: "Privacy Policy", path: "/legal#privacy-policy" },
+    { name: "Terms & Conditions", path: "/legal#terms-and-conditions" },
+    { name: "Return Policy", path: "/legal#return-policy" }
   ];
 
   const socialLinks = [
@@ -131,10 +131,6 @@ export default function Footer() {
                   </a>
                 ))}
               </div>
-              <div className="rounded-xl border border-white/10 bg-white/5 p-4">
-                <p className="mb-1 text-xs font-bold uppercase tracking-tighter text-secondary">Newsletter</p>
-                <p className="text-xs text-accent/60">Subscribe for updates and special offers.</p>
-              </div>
             </div>
           </div>
         </div>
@@ -155,13 +151,13 @@ export default function Footer() {
 
             <div className="order-2 flex gap-4 md:order-3">
               {legalLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.path}
+                  to={link.path}
                   className="text-xs text-accent/50 transition-colors hover:text-secondary"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
