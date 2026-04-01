@@ -65,6 +65,9 @@ module.exports = {
         "premium": "0 10px 40px rgba(0, 0, 0, 0.15)",
         "hover": "0 20px 50px rgba(0, 0, 0, 0.2)",
       },
+      gridAutoRows: {
+        menu: "1fr",
+      },
     },
   },
   plugins: [],

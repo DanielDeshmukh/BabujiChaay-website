@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --text-secondary: #0B3D2E;
+  --gold-accent: #D6A756;
+}
+
 /* ============ BASE STYLES ============ */
 * {
   margin: 0;

@@ -1,8 +1,7 @@
-// Complete product database for Babuji Chaay
-export const products = {
+const rawProducts = {
   "hot-beverages": {
     name: "Hot Beverages",
-    icon: "☕",
+    icon: "coffee",
     items: [
       { name: "Babuji Regular Chaay", price: "15", variants: ["15", "20", "25"] },
       { name: "Rose Tea", price: "30" },
@@ -35,7 +34,7 @@ export const products = {
   },
   "cold-beverages": {
     name: "Cold Beverages",
-    icon: "🥤",
+    icon: "cup-soda",
     items: [
       { name: "Lemon Ice Tea", price: "55" },
       { name: "Cold Coffee", price: "90" },
@@ -47,7 +46,7 @@ export const products = {
   },
   "snacks": {
     name: "Snacks & Noodles",
-    icon: "🍜",
+    icon: "utensils-crossed",
     items: [
       { name: "Maggie", price: "45" },
       { name: "Masala Maggie", price: "60" },
@@ -71,7 +70,7 @@ export const products = {
   },
   "fries": {
     name: "Fries",
-    icon: "🍟",
+    icon: "sandwich",
     items: [
       { name: "French Fries Large", price: "80" },
       { name: "Peri-Peri Fries Large", price: "90" },
@@ -82,7 +81,7 @@ export const products = {
   },
   "burgers": {
     name: "Burgers",
-    icon: "🍔",
+    icon: "pizza",
     items: [
       { name: "Veggi Classic Burger", price: "69" },
       { name: "Classic Salad Veggi Burger", price: "79" },
@@ -94,7 +93,7 @@ export const products = {
   },
   "toasts": {
     name: "Toast & Buns",
-    icon: "🥐",
+    icon: "sandwich",
     items: [
       { name: "Amul Butter Toast", price: "25" },
       { name: "Amul Bun Maska", price: "30" },
@@ -104,7 +103,7 @@ export const products = {
   },
   "combos": {
     name: "Combos",
-    icon: "🎁",
+    icon: "package",
     items: [
       { name: "Masala Cheese Maggie + Cold Coffee", price: "135" },
       { name: "Salted Fries Large + Cold Coffee", price: "130" },
@@ -120,7 +119,7 @@ export const products = {
   },
   "tea-special": {
     name: "Tea Specials",
-    icon: "🍵",
+    icon: "leaf",
     items: [
       { name: "Honey Black Tea", price: "25" },
       { name: "Honey Tulsi Black Chaay", price: "30" },
@@ -137,3 +136,138 @@ export const products = {
     ]
   }
 };
+
+function inferDescription(name, categoryKey) {
+  const lowerName = name.toLowerCase();
+
+  if (lowerName.includes("rose")) {
+    return "Soft floral perfume, delicate sweetness, and a soothing finish.";
+  }
+
+  if (lowerName.includes("kashmiri pink")) {
+    return "Creamy, rosy sips with silky body and gentle warmth.";
+  }
+
+  if (lowerName.includes("coffee")) {
+    return lowerName.includes("cold")
+      ? "Creamy chilled coffee, mellow sweetness, and a smooth finish."
+      : "Roasted, velvety coffee with deep aroma and lingering richness.";
+  }
+
+  if (lowerName.includes("lemon") && lowerName.includes("mint")) {
+    return "Bright citrus notes, cooling lift, and a crisp herbal finish.";
+  }
+
+  if (lowerName.includes("lemon") && lowerName.includes("ginger")) {
+    return "Lively citrus spark, ginger warmth, and a clean finish.";
+  }
+
+  if (lowerName.includes("lemon")) {
+    return "Fresh citrus brightness with brisk aroma and thirst-quenching finish.";
+  }
+
+  if (lowerName.includes("tulsi")) {
+    return "Herbal tulsi fragrance, mellow warmth, and a calming finish.";
+  }
+
+  if (lowerName.includes("adrak") || lowerName.includes("ginger")) {
+    return "Zesty ginger warmth, brisk aroma, and a soothing spiced finish.";
+  }
+
+  if (lowerName.includes("elaichi")) {
+    return "Sweet cardamom perfume, creamy body, and softly spiced warmth.";
+  }
+
+  if (lowerName.includes("masala")) {
+    return "Layered spice, creamy texture, and a bold lingering finish.";
+  }
+
+  if (lowerName.includes("clove")) {
+    return "Warm clove perfume, gentle heat, and a rounded finish.";
+  }
+
+  if (lowerName.includes("black")) {
+    return "Clean-bodied brew with assertive depth and elegant dry finish.";
+  }
+
+  if (lowerName.includes("mojito")) {
+    return "Cooling, sparkling refreshment with lifted citrus and minty finish.";
+  }
+
+  if (lowerName.includes("chaas") || lowerName.includes("pani")) {
+    return "Refreshing, savory sips with bright spice and cooling balance.";
+  }
+
+  if (lowerName.includes("fries")) {
+    return lowerName.includes("loaded") || lowerName.includes("cheese")
+      ? "Crisp fries crowned with molten cheese and indulgent savoriness."
+      : "Golden, crisp fries with fluffy centers and satisfying seasoning.";
+  }
+
+  if (lowerName.includes("burger")) {
+    return lowerName.includes("chipotle")
+      ? "Smoky, saucy layers with tender bite and warming finish."
+      : "Toasty bun, juicy filling, and balanced crunch in every bite.";
+  }
+
+  if (lowerName.includes("toast") || lowerName.includes("bun")) {
+    return lowerName.includes("jam")
+      ? "Buttery toastiness meets glossy jam and gentle comforting sweetness."
+      : "Warm buttery toast with crisp edges and comforting softness.";
+  }
+
+  if (lowerName.includes("combo")) {
+    return "A balanced pairing of signature favorites for satisfying variety.";
+  }
+
+  if (lowerName.includes("+")) {
+    return "A craveable pairing layered with contrast, comfort, and value.";
+  }
+
+  if (lowerName.includes("maggie") || lowerName.includes("noodle")) {
+    if (lowerName.includes("cheese")) {
+      return "Silky noodles, molten cheese, and savory spice in harmony.";
+    }
+
+    if (lowerName.includes("peri-peri")) {
+      return "Fiery seasoning, springy noodles, and bold savory depth throughout.";
+    }
+
+    if (lowerName.includes("butter")) {
+      return "Buttery, glossy noodles with rich aroma and comforting warmth.";
+    }
+
+    if (lowerName.includes("corn")) {
+      return "Sweet corn pops through savory noodles with cozy richness.";
+    }
+
+    if (lowerName.includes("vegitable")) {
+      return "Tender vegetables, springy noodles, and layered masala comfort.";
+    }
+
+    return "Soft, savory noodles with cozy spice and familiar comfort.";
+  }
+
+  if (categoryKey === "combos") {
+    return "A balanced pairing of signature favorites for satisfying variety.";
+  }
+
+  if (categoryKey === "cold-beverages") {
+    return "Chilled, fragrant refreshment with bright flavor and clean finish.";
+  }
+
+  return "Comforting flavors, inviting aroma, and a polished premium finish.";
+}
+
+export const products = Object.fromEntries(
+  Object.entries(rawProducts).map(([categoryKey, category]) => [
+    categoryKey,
+    {
+      ...category,
+      items: category.items.map((item) => ({
+        ...item,
+        description: inferDescription(item.name, categoryKey)
+      }))
+    }
+  ])
+);

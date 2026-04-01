@@ -1,104 +1,109 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { BookOpen, Home, Mail, Menu, Store, X } from "lucide-react";
 import icon from "../assets/icon.png";
+
+const iconProps = {
+  size: 18,
+  strokeWidth: 1.5,
+  className: "text-[var(--gold-accent)]"
+};
+
+const navItems = [
+  { href: "/", label: "Home", icon: <Home {...iconProps} /> },
+  { href: "/menu", label: "Menu", icon: <BookOpen {...iconProps} /> },
+  { href: "/franchise", label: "Franchise", icon: <Store {...iconProps} /> },
+  { href: "/contact", label: "Contact", icon: <Mail {...iconProps} /> }
+];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <>
-      <header className="w-full bg-primary text-accent fixed top-0 left-0 z-50 shadow-premium">
-        <div className="container-max px-4 md:px-6 py-4 flex items-center justify-between">
-          
-          {/* LOGO + NAME */}
-          <Link 
-            to="/" 
-            className="flex items-center gap-3 group"
-            onClick={() => setOpen(false)}
-          >
-            <div className="relative overflow-hidden rounded-lg">
-              <img 
-                src={icon} 
-                alt="Babuji Chaay Logo" 
-                className="w-12 h-12 object-cover transform group-hover:scale-110 transition-transform duration-300" 
-              />
-            </div>
-            <div>
-              <span className="text-2xl font-extrabold tracking-wider text-accent block leading-tight">
-                Babuji
-              </span>
-              <span className="text-sm font-semibold text-secondary">Chaay Café</span>
-            </div>
-          </Link>
-
-          {/* HAMBURGER MENU */}
-          <button
-            className="text-3xl md:hidden focus:outline-none transition-colors hover:text-secondary"
-            onClick={() => setOpen(!open)}
-            aria-label="Toggle menu"
-          >
-            {open ? "✖" : "☰"}
-          </button>
-
-          {/* DESKTOP NAVIGATION */}
-          <nav className="hidden md:flex gap-1">
-            <NavLink href="/" label="Home" />
-            <NavLink href="/menu" label="Menu" />
-            <NavLink href="/franchise" label="Franchise" />
-            <NavLink href="/contact" label="Contact" />
-          </nav>
-
-          {/* DESKTOP CTA BUTTON */}
-          <Link
-            to="/contact"
-            className="hidden md:inline-block btn-primary text-sm"
-          >
-            Get In Touch
-          </Link>
-        </div>
-
-        {/* MOBILE MENU */}
-        {open && (
-          <div className="md:hidden bg-primary border-t border-secondary border-opacity-20 shadow-lg animate-slideDown">
-            <nav className="flex flex-col container-max px-4 py-6 space-y-2">
-              <MobileNavLink href="/" label="Home" onClose={() => setOpen(false)} />
-              <MobileNavLink href="/menu" label="Menu" onClose={() => setOpen(false)} />
-              <MobileNavLink href="/franchise" label="Franchise" onClose={() => setOpen(false)} />
-              <MobileNavLink href="/contact" label="Contact" onClose={() => setOpen(false)} />
-              <Link
-                to="/contact"
-                className="btn-primary text-center w-full mt-4"
-                onClick={() => setOpen(false)}
-              >
-                Get In Touch
-              </Link>
-            </nav>
+    <header className="fixed left-0 top-0 z-50 w-full bg-primary text-accent shadow-premium">
+      <div className="container-max flex items-center justify-between px-4 py-4 md:px-6">
+        <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
+          <div className="relative overflow-hidden rounded-lg">
+            <img
+              src={icon}
+              alt="Babuji Chaay Logo"
+              className="h-12 w-12 object-cover transition-transform duration-300 group-hover:scale-110"
+            />
           </div>
-        )}
-      </header>
-    </>
+          <div>
+            <span className="block text-2xl font-extrabold leading-tight tracking-wider text-accent">
+              Babuji
+            </span>
+            <span className="text-sm font-semibold text-secondary">Chaay Cafe</span>
+          </div>
+        </Link>
+
+        <button
+          className="rounded-full p-2 transition-colors hover:text-secondary md:hidden"
+          onClick={() => setOpen((current) => !current)}
+          aria-label="Toggle menu"
+        >
+          {open ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+        </button>
+
+        <nav className="hidden gap-1 md:flex">
+          {navItems.map(({ href, label, icon }) => (
+            <NavLink key={href} href={href} label={label} icon={icon} />
+          ))}
+        </nav>
+
+        <Link to="/contact" className="hidden md:inline-block btn-primary text-sm">
+          Get In Touch
+        </Link>
+      </div>
+
+      {open && (
+        <div className="animate-slideDown border-t border-secondary/20 bg-primary shadow-lg md:hidden">
+          <nav className="container-max flex flex-col space-y-2 px-4 py-6">
+            {navItems.map(({ href, label, icon }) => (
+              <MobileNavLink
+                key={href}
+                href={href}
+                label={label}
+                icon={icon}
+                onClose={() => setOpen(false)}
+              />
+            ))}
+            <Link
+              to="/contact"
+              className="btn-primary mt-4 w-full text-center"
+              onClick={() => setOpen(false)}
+            >
+              Get In Touch
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }
 
-function NavLink({ href, label }) {
+function NavLink({ href, label, icon }) {
   return (
     <Link
       to={href}
-      className="px-4 py-2 text-lg font-medium text-accent hover:text-secondary transition-colors duration-300 relative group"
+      className="group relative flex items-center gap-2 px-4 py-2 text-lg font-medium text-accent transition-colors duration-300 hover:text-secondary"
     >
+      {icon}
       {label}
-      <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+      <span className="absolute bottom-0 left-4 right-4 h-0.5 origin-center scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" />
     </Link>
   );
 }
 
-function MobileNavLink({ href, label, onClose }) {
+function MobileNavLink({ href, label, icon, onClose }) {
   return (
     <Link
       to={href}
       onClick={onClose}
-      className="block px-4 py-3 text-lg font-medium text-accent hover:bg-primary-dark hover:text-secondary transition-colors duration-300 rounded-lg"
+      className="flex items-center gap-3 rounded-lg px-4 py-3 text-lg font-medium text-accent transition-colors duration-300 hover:bg-black/10 hover:text-secondary"
     >
+      {icon}
       {label}
     </Link>
   );

@@ -1,6 +1,23 @@
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import {
+  Camera,
+  ChevronRight,
+  Globe,
+  Heart,
+  Mail,
+  MessageCircle,
+  MapPin,
+  PlayCircle,
+  Phone,
+} from "lucide-react";
+import { FaFacebook, FaInstagramSquare, FaTwitter, FaYoutube } from "react-icons/fa";
+
 import icon from "../assets/icon.png";
+
+const goldIconProps = {
+  strokeWidth: 1.5,
+  className: "text-[var(--gold-accent)]"
+};
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,50 +36,50 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { icon: <FaFacebookF size={18} />, name: "Facebook", url: "https://facebook.com" },
-    { icon: <FaInstagram size={18} />, name: "Instagram", url: "https://instagram.com" },
-    { icon: <FaTwitter size={18} />, name: "Twitter", url: "https://twitter.com" },
-    { icon: <FaYoutube size={18} />, name: "YouTube", url: "https://youtube.com" }
+    { icon: <FaFacebook size={22} />, name: "Facebook", url: "https://facebook.com" },
+    { icon: <FaInstagramSquare size={22} />, name: "Instagram", url: "https://instagram.com" },
+    { icon: <FaTwitter size={22} />, name: "Twitter", url: "https://twitter.com" },
+    { icon: <FaYoutube size={22} />, name: "YouTube", url: "https://youtube.com" }
   ];
 
   return (
     <footer className="bg-primary text-accent">
-      {/* MAIN FOOTER CONTENT */}
-      <div className="py-16 border-b border-accent/10">
+      <div className="border-b border-accent/10 py-16">
         <div className="container-max px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            
-            {/* BRAND SECTION */}
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-6">
               <Link to="/" className="flex items-center gap-3 group">
                 <div className="relative overflow-hidden rounded-lg bg-white p-1">
-                  <img 
+                  <img
                     src={icon}
                     alt="Babuji Chaay"
-                    className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300"
+                    className="h-10 w-10 object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
                 <div>
-                  <p className="font-serif font-bold text-xl text-accent tracking-wide">Babuji Chaay</p>
-                  <p className="text-xs text-secondary font-medium tracking-widest uppercase">Brewing Happiness</p>
+                  <p className="text-xl font-bold tracking-wide text-accent font-serif">Babuji Chaay</p>
+                  <p className="text-xs font-medium uppercase tracking-widest text-secondary">
+                    Brewing Happiness
+                  </p>
                 </div>
               </Link>
-              <p className="text-sm text-accent/80 leading-relaxed max-w-xs">
+              <p className="max-w-xs text-sm leading-relaxed text-accent/80">
                 Authentic Indian chai, premium beverages, and delicious snacks crafted with passion and quality ingredients.
               </p>
             </div>
 
-            {/* QUICK LINKS */}
             <div>
-              <h4 className="font-bold text-lg mb-6 text-secondary underline decoration-secondary/30 underline-offset-8">Explore</h4>
+              <h4 className="mb-6 text-lg font-bold text-secondary underline decoration-secondary/30 underline-offset-8">
+                Explore
+              </h4>
               <ul className="space-y-3">
-                {quickLinks.map((link, idx) => (
-                  <li key={idx}>
-                    <Link 
+                {quickLinks.map((link) => (
+                  <li key={link.name}>
+                    <Link
                       to={link.path}
-                      className="text-accent/80 hover:text-secondary transition-all text-sm flex items-center gap-2 group"
+                      className="group flex items-center gap-2 text-sm text-accent/80 transition-all hover:text-secondary"
                     >
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity text-secondary">→</span>
+                      <ChevronRight size={16} strokeWidth={1.5} className="text-[var(--gold-accent)] opacity-70 transition-opacity group-hover:opacity-100" />
                       {link.name}
                     </Link>
                   </li>
@@ -70,92 +87,89 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* CONTACT INFO */}
             <div>
-              <h4 className="font-bold text-lg mb-6 text-secondary underline decoration-secondary/30 underline-offset-8">Contact Us</h4>
+              <h4 className="mb-6 text-lg font-bold text-secondary underline decoration-secondary/30 underline-offset-8">
+                Contact Us
+              </h4>
               <ul className="space-y-4 text-sm text-accent/80">
                 <li className="flex items-start gap-3">
-                  <span className="text-secondary text-lg">📍</span>
-                  <span className="leading-snug">K D Empire, Kanakia Park, Mira Road East, Mumbai, Maharashtra 401107</span>
+                  <MapPin size={36} {...goldIconProps} />
+                  <span className="leading-snug">
+                    K D Empire, Kanakia Park, Mira Road East, Mumbai, Maharashtra 401107
+                  </span>
                 </li>
                 <li>
-                  <a href="tel:+919076165666" className="hover:text-secondary transition-colors flex items-center gap-3 group">
-                    <span className="text-secondary text-lg">📞</span>
+                  <a href="tel:+919076165666" className="group flex items-center gap-3 transition-colors hover:text-secondary">
+                    <Phone size={18} {...goldIconProps} />
                     <span>+91 90761 65666</span>
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:babujichai55@gmail.com" className="hover:text-secondary transition-colors flex items-center gap-3 group">
-                    <span className="text-secondary text-lg">✉️</span>
+                  <a href="mailto:babujichai55@gmail.com" className="group flex items-center gap-3 transition-colors hover:text-secondary">
+                    <Mail size={18} {...goldIconProps} />
                     <span>babujichai55@gmail.com</span>
                   </a>
                 </li>
               </ul>
             </div>
 
-            {/* FOLLOW US */}
             <div className="space-y-6">
-              <h4 className="font-bold text-lg mb-6 text-secondary underline decoration-secondary/30 underline-offset-8">Follow Our Story</h4>
+              <h4 className="mb-6 text-lg font-bold text-secondary underline decoration-secondary/30 underline-offset-8">
+                Follow Our Story
+              </h4>
               <div className="flex gap-4">
-                {socialLinks.map((social, idx) => (
+                {socialLinks.map(({ icon: socialIcon, name, url }) => (
                   <a
-                    key={idx}
-                    href={social.url}
+                    key={name}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={social.name}
-                    className="w-10 h-10 border border-secondary/30 text-secondary rounded-full flex items-center justify-center hover:bg-secondary hover:text-primary transition-all duration-300 transform hover:-translate-y-1"
+                    title={name}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-secondary/30 text-secondary transition-all duration-300 hover:-translate-y-1 hover:bg-secondary hover:text-primary"
                   >
-                    {social.icon}
+                    {socialIcon}
                   </a>
                 ))}
               </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-white/10">
-                <p className="text-xs font-bold text-secondary uppercase tracking-tighter mb-1">Newsletter</p>
-                <p className="text-xs text-accent/60">Subscribe for updates & special offers.</p>
+              <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                <p className="mb-1 text-xs font-bold uppercase tracking-tighter text-secondary">Newsletter</p>
+                <p className="text-xs text-accent/60">Subscribe for updates and special offers.</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
 
-      {/* BOTTOM SECTION */}
-      <div className="py-8 bg-black/20">
+      <div className="bg-black/20 py-8">
         <div className="container-max px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* COPYRIGHT */}
-            <div className="order-3 md:order-1 text-center md:text-left">
-              <p className="text-xs text-accent/50">
-                © {currentYear} Babuji Chaay. All rights reserved.
-              </p>
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+            <div className="order-3 text-center md:order-1 md:text-left">
+              <p className="text-xs text-accent/50">&copy; {currentYear} Babuji Chaay. All rights reserved.</p>
             </div>
 
-            {/* CENTER TEXT */}
-            <div className="order-1 md:order-2 text-center">
+            <div className="order-1 text-center md:order-2">
               <p className="text-sm font-serif italic text-secondary/80">
-                "Brewing Happiness • Fresh chai, fresh smiles"
+                "Brewing Happiness / Fresh chai, fresh smiles"
               </p>
             </div>
 
-            {/* LEGAL LINKS */}
-            <div className="order-2 md:order-3 flex gap-4">
-              {legalLinks.map((link, idx) => (
-                <a 
-                  key={idx}
+            <div className="order-2 flex gap-4 md:order-3">
+              {legalLinks.map((link) => (
+                <a
+                  key={link.name}
                   href={link.path}
-                  className="text-xs text-accent/50 hover:text-secondary transition-colors"
+                  className="text-xs text-accent/50 transition-colors hover:text-secondary"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
           </div>
-          
+
           <div className="mt-8 text-center">
-             <p className="text-[10px] text-accent/30 uppercase tracking-[0.2em]">
-                Made with ❤️ in India
-             </p>
+            <p className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-accent/30">
+              Made with <Heart size={12} strokeWidth={1.5} className="text-[var(--gold-accent)]" /> in India
+            </p>
           </div>
         </div>
       </div>

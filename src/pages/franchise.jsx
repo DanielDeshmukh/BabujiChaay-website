@@ -1,58 +1,90 @@
 import { Link } from "react-router-dom";
+import {
+  BadgeCheck,
+  BriefcaseBusiness,
+  Coffee,
+  CupSoda,
+  Flame,
+  Gift,
+  Handshake,
+  Leaf,
+  Mail,
+  MapPin,
+  Phone,
+  Pizza,
+  Rocket,
+  Sandwich,
+  UtensilsCrossed
+} from "lucide-react";
+
+const goldIconClass = "text-[var(--gold-accent)] ";
+const featureIconProps = { size: 36, strokeWidth: 1.5, className: goldIconClass };
+const inlineIconProps = { size: 20, strokeWidth: 1.5, className: goldIconClass };
 
 export default function Franchise() {
   const benefits = [
-    { icon: "🔥", title: "Growing Brand", description: "Babuji Chaay is rapidly expanding with loyal customers" },
-    { icon: "☕", title: "Proven Products", description: "50+ authentic beverages and snacks that customers love" },
-    { icon: "🤝", title: "Full Support", description: "We provide training, guidance, and ongoing assistance" },
-    { icon: "💼", title: "Flexible Model", description: "Various setup options to suit your investment and location" },
+    { icon: <Flame {...featureIconProps} />, title: "Growing Brand", description: "Babuji Chaay is rapidly expanding with loyal customers" },
+    { icon: <Coffee {...featureIconProps} />, title: "Proven Products", description: "50+ authentic beverages and snacks that customers love" },
+    { icon: <Handshake {...featureIconProps} />, title: "Full Support", description: "We provide training, guidance, and ongoing assistance" },
+    { icon: <BriefcaseBusiness {...featureIconProps} />, title: "Flexible Model", description: "Various setup options to suit your investment and location" }
+  ];
+
+  const productRange = [
+    { icon: <Coffee {...featureIconProps} />, label: "27 Hot Beverages" },
+    { icon: <CupSoda {...featureIconProps} />, label: "6 Cold Drinks" },
+    { icon: <UtensilsCrossed {...featureIconProps} />, label: "20+ Snacks" },
+    { icon: <Sandwich {...featureIconProps} />, label: "5 Fries Options" },
+    { icon: <Pizza {...featureIconProps} />, label: "6 Burgers" },
+    { icon: <Sandwich {...featureIconProps} />, label: "4 Toast/Bun" },
+    { icon: <Gift {...featureIconProps} />, label: "8 Combos" },
+    { icon: <Leaf {...featureIconProps} />, label: "9 Tea Specials" }
   ];
 
   return (
-    <main className="pt-24 min-h-screen bg-accent">
-      {/* HERO SECTION */}
-      <section className="bg-gradient-to-b from-primary to-primary py-16 text-accent text-center">
+    <main className="min-h-screen bg-accent pt-24">
+      <section className="bg-gradient-to-b from-primary to-primary py-16 text-center text-accent">
         <div className="container-max">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Partnership Opportunities</h1>
-          <p className="text-lg text-accent text-opacity-90 max-w-2xl mx-auto mb-8">
+          <h1 className="mb-4 text-4xl font-serif font-bold md:text-5xl">Partnership Opportunities</h1>
+          <p className="mx-auto mb-8 max-w-2xl text-lg text-accent/90">
             Interested in joining Babuji Chaay? We'd love to explore partnership opportunities with you.
           </p>
-          <div className="text-3xl">☕ Quality • Growth • Support</div>
+          <div className="inline-flex items-center gap-4 text-2xl md:text-3xl">
+            <Coffee {...featureIconProps} />
+            <span>Quality / Growth / Support</span>
+          </div>
         </div>
       </section>
 
-      {/* WHY BABUJI CHAAY */}
       <section className="section-padding bg-accent">
         <div className="container-max">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-serif font-bold text-primary md:text-5xl">
               Why Partner With Us?
             </h2>
-            <div className="divider-accent mx-auto"></div>
+            <div className="divider-accent mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {benefits.map((benefit, idx) => (
-              <div 
-                key={idx}
-                className="card p-8 text-center hover:border-secondary hover:border-2 animate-fadeInUp"
+          <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {benefits.map(({ icon, title, description }, idx) => (
+              <div
+                key={title}
+                className="card animate-fadeInUp p-8 text-center hover:border-2 hover:border-secondary"
                 style={{ animationDelay: `${idx * 0.05}s` }}
               >
-                <div className="text-5xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-bold text-primary mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{benefit.description}</p>
+                <div className="mb-4 flex justify-center">{icon}</div>
+                <h3 className="mb-3 text-xl font-bold text-primary">{title}</h3>
+                <p className="leading-relaxed text-gray-600">{description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHAT WE OFFER */}
       <section className="section-padding bg-white">
         <div className="container-max">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2">
             <div className="animate-slideInLeft">
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-8">
+              <h2 className="mb-8 text-4xl font-serif font-bold text-primary md:text-5xl">
                 What We Provide
               </h2>
               <ul className="space-y-4">
@@ -64,22 +96,24 @@ export default function Franchise() {
                   "Ongoing operational support",
                   "Quality assurance monitoring"
                 ].map((item, idx) => (
-                  <li 
-                    key={idx}
+                  <li
+                    key={item}
                     className="flex items-start gap-4 animate-fadeInUp"
                     style={{ animationDelay: `${idx * 0.1}s` }}
                   >
-                    <span className="text-2xl text-secondary flex-shrink-0">✓</span>
+                    <BadgeCheck {...inlineIconProps} className={goldIconClass + " flex-shrink-0"} />
                     <span className="text-lg text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-accent text-center h-full flex flex-col justify-center animate-slideInRight">
-              <div className="text-6xl mb-6">🎯</div>
-              <h3 className="text-3xl font-bold mb-4">Let's Talk!</h3>
-              <p className="text-lg mb-8 leading-relaxed">
+            <div className="flex h-full flex-col justify-center rounded-2xl bg-gradient-to-br from-primary to-[#124B39] p-8 text-center text-accent animate-slideInRight">
+              <div className="mb-6 flex justify-center">
+                <Rocket size={46} strokeWidth={1.5} className={goldIconClass} />
+              </div>
+              <h3 className="mb-4 text-3xl font-bold">Let's Talk!</h3>
+              <p className="mb-8 text-lg leading-relaxed">
                 Every partnership is unique. We'd love to discuss your vision and explore how we can work together to build something great.
               </p>
               <Link to="/contact" className="btn-primary text-center">
@@ -90,71 +124,61 @@ export default function Franchise() {
         </div>
       </section>
 
-      {/* OUR PRODUCTS */}
       <section className="section-padding bg-accent">
         <div className="container-max">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-serif font-bold text-primary md:text-5xl">
               Our Product Range
             </h2>
-            <div className="divider-accent mx-auto"></div>
+            <div className="divider-accent mx-auto" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: "☕", label: "27 Hot Beverages" },
-              { icon: "🥤", label: "6 Cold Drinks" },
-              { icon: "🍜", label: "20+ Snacks" },
-              { icon: "🍟", label: "5 Fries Options" },
-              { icon: "🍔", label: "6 Burgers" },
-              { icon: "🥐", label: "4 Toast/Bun" },
-              { icon: "🎁", label: "8 Combos" },
-              { icon: "🍵", label: "9 Tea Specials" },
-            ].map((product, idx) => (
-              <div key={idx} className="card p-6 text-center animate-fadeInUp" style={{ animationDelay: `${idx * 0.05}s` }}>
-                <div className="text-4xl mb-3">{product.icon}</div>
-                <p className="font-semibold text-primary">{product.label}</p>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+            {productRange.map(({ icon, label }, idx) => (
+              <div
+                key={label}
+                className="card animate-fadeInUp p-6 text-center"
+                style={{ animationDelay: `${idx * 0.05}s` }}
+              >
+                <div className="mb-3 flex justify-center">{icon}</div>
+                <p className="font-semibold text-primary">{label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* INQUIRY FORM SECTION */}
       <section className="section-padding bg-white">
         <div className="container-max max-w-2xl">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-serif font-bold text-primary mb-4">
-              Get In Touch
-            </h2>
-            <div className="divider-accent mx-auto"></div>
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-serif font-bold text-primary">Get In Touch</h2>
+            <div className="divider-accent mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="animate-slideInLeft">
-              <h3 className="text-2xl font-bold text-primary mb-6">Contact Us Directly</h3>
+              <h3 className="mb-6 text-2xl font-bold text-primary">Contact Us Directly</h3>
               <div className="space-y-4">
-                <div className="card p-6">
-                  <p className="text-secondary font-bold text-lg mb-2">📞 Phone</p>
-                  <a href="tel:+919076165666" className="text-primary hover:text-secondary transition-colors font-semibold">
+                <ContactCard icon={<Phone size={18} strokeWidth={1.5} className={goldIconClass}  />} title="Phone">
+                  <a href="tel:+919076165666" className="font-semibold text-primary transition-colors hover:text-secondary">
                     +91 90761 65666
                   </a>
-                </div>
-                <div className="card p-6">
-                  <p className="text-secondary font-bold text-lg mb-2">📧 Email</p>
-                  <a href="mailto:babujichai55@gmail.com" className="text-primary hover:text-secondary transition-colors font-semibold">
+                </ContactCard>
+                <ContactCard icon={<Mail size={18} strokeWidth={1.5} className={goldIconClass} />} title="Email">
+                  <a href="mailto:babujichai55@gmail.com" className="font-semibold text-primary transition-colors hover:text-secondary">
                     babujichai55@gmail.com
                   </a>
-                </div>
-                <div className="card p-6">
-                  <p className="text-secondary font-bold text-lg mb-2">📍 Location</p>
-                  <p className="text-primary">K D Empire, Kanakia Park, Mira Road East, Mira Bhayandar, Maharashtra 401107, India</p>
-                </div>
+                </ContactCard>
+                <ContactCard icon={<MapPin size={18} strokeWidth={1.5} className={goldIconClass} />} title="Location">
+                  <p className="text-primary">
+                    K D Empire, Kanakia Park, Mira Road East, Mira Bhayandar, Maharashtra 401107, India
+                  </p>
+                </ContactCard>
               </div>
             </div>
 
-            <div className="animate-slideInRight bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-accent flex flex-col justify-center">
-              <h4 className="text-2xl font-bold mb-4">Tell Us About Yourself</h4>
+            <div className="flex flex-col justify-center rounded-2xl bg-gradient-to-br from-primary to-[#124B39] p-8 text-accent animate-slideInRight">
+              <h4 className="mb-4 text-2xl font-bold">Tell Us About Yourself</h4>
               <p className="mb-6 leading-relaxed">
                 Share your vision, location, and interest level. We'll evaluate the opportunity and get back to you with details.
               </p>
@@ -166,20 +190,18 @@ export default function Franchise() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="section-padding bg-gradient-to-r from-primary to-primary-dark text-accent text-center">
+      <section className="section-padding bg-gradient-to-r from-primary to-[#124B39] text-center text-accent">
         <div className="container-max max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">
-            Ready to Explore?
-          </h2>
-          <p className="text-lg text-accent text-opacity-90 mb-8 leading-relaxed">
+          <h2 className="mb-6 text-4xl font-serif font-bold md:text-5xl">Ready to Explore?</h2>
+          <p className="mb-8 text-lg leading-relaxed text-accent/90">
             We believe in building long-term partnerships with dedicated individuals who share our passion for quality chai and customer satisfaction.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link to="/contact" className="btn-primary text-center">
               Send Us Your Interest
             </Link>
-            <a href="tel:+919076165666" className="btn-secondary text-center">
+            <a href="tel:+919076165666" className="btn-secondary inline-flex items-center justify-center gap-2 text-center">
+              <Phone {...inlineIconProps} />
               Call: +91 90761 65666
             </a>
           </div>
@@ -189,4 +211,14 @@ export default function Franchise() {
   );
 }
 
-
+function ContactCard({ icon, title, children }) {
+  return (
+    <div className="card p-6">
+      <div className="mb-2 flex items-center gap-3">
+        {icon}
+        <p className="text-lg font-bold text-secondary">{title}</p>
+      </div>
+      {children}
+    </div>
+  );
+}
