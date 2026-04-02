@@ -9,7 +9,7 @@ import {
   Star,
   UtensilsCrossed
 } from "lucide-react";
-import picture from "../assets/Black Tulsi Chaay.jpg";
+import picture from "../assets/black-tulsi-chaay.jpg";
 
 const goldIconClass = "text-[var(--gold-accent)]";
 const featureIconProps = { size: 38, strokeWidth: 1.5, className: goldIconClass };

@@ -36,7 +36,7 @@ This is a modern web application built with React and Vite, designed to provide 
 │
 ├── src/
 │   ├── assets/             # Images and media
-│   │   ├── Logo.png
+│   │   ├── logo.png
 │   │   ├── icon.png
 │   │   └── picture.png
 │   │
