@@ -19,8 +19,8 @@ export default function Home() {
   const features = [
     {
       icon: <Coffee {...featureIconProps} />,
-      title: "Premium Chai",
-      description: "27 varieties of authentic Indian chai with finest spices"
+      title: "Premium Chaay",
+      description: "27 varieties of authentic Indian chaay with finest spices"
     },
     {
       icon: <Sandwich {...featureIconProps} />,
@@ -43,7 +43,7 @@ export default function Home() {
     {
       name: "Deep Goriwale",
       role: "Regular Customer",
-      text: "The best chai in town! Perfect hangout spot with amazing snacks.",
+      text: "The best chaay in town! Perfect hangout spot with amazing snacks.",
       rating: 5
     },
     {
@@ -81,7 +81,7 @@ export default function Home() {
             </div>
 
             <p className="max-w-lg text-base leading-relaxed text-accent/90 md:text-lg">
-              Experience the authentic taste of traditional Indian chai blended with modern cafe culture.
+              Experience the authentic taste of traditional Indian chaay blended with modern cafe culture.
               Premium ingredients, perfect ambiance, and unforgettable moments await you.
             </p>
 
@@ -100,7 +100,7 @@ export default function Home() {
               <div className="absolute inset-0 rounded-full bg-secondary opacity-20 blur-3xl" />
               <img
                 src={picture}
-                alt="Babuji Chaay - Premium Chai"
+                alt="Babuji Chaay - Premium Chaay"
                 className="relative aspect-square w-full rounded-2xl object-cover shadow-hover transition-transform duration-500 hover:scale-105"
               />
             </div>
@@ -116,7 +116,7 @@ export default function Home() {
             </h2>
             <div className="divider-accent mx-auto mb-6" />
             <p className="mx-auto max-w-2xl text-lg text-gray-700">
-              Quality chai, authentic recipes, and a welcoming place to unwind.
+              Quality chaay, authentic recipes, and a welcoming place to unwind.
             </p>
           </div>
 
@@ -147,7 +147,7 @@ export default function Home() {
                 <MenuPreviewItem
                   icon={<Coffee {...inlineIconProps} />}
                   title="27 Hot Beverages"
-                  description="From classic Masala Chai to specialty blends"
+                  description="From classic Masala Chaay to specialty blends"
                 />
                 <MenuPreviewItem
                   icon={<UtensilsCrossed {...inlineIconProps} />}
@@ -240,7 +240,7 @@ export default function Home() {
             </h2>
           </div>
           <p className="mb-8 text-lg text-gray-700">
-            K D Empire, Kanakia Park, Mira Road East, Mira Bhayandar, Maharashtra 401107, India. Open daily with fresh chai and a welcoming atmosphere.
+            K D Empire, Kanakia Park, Mira Road East, Mira Bhayandar, Maharashtra 401107, India. Open daily with fresh chaay and a welcoming atmosphere.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link to="/contact" className="btn-primary text-center">

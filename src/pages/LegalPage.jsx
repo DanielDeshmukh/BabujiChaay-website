@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { legalPageData } from "../data/legalData";
 
-function BackToMenuButton() {
+function BackToHomeButton() {
   return (
     <Link
-      to="/menu"
+      to="/"
       className="inline-flex items-center justify-center rounded-full border border-[#0B3D2E] px-5 py-2 text-sm font-semibold text-[#0B3D2E] transition-colors hover:bg-[#0B3D2E] hover:text-[#F8F5F1]"
     >
-      Back to Menu
+      Back to home
     </Link>
   );
 }
@@ -18,7 +18,7 @@ export default function LegalPage() {
       <section className="py-10 sm:py-14">
         <div className="mx-auto w-full max-w-[800px] px-6 font-sans leading-relaxed">
           <div className="mb-8 flex justify-start">
-            <BackToMenuButton />
+            <BackToHomeButton />
           </div>
 
           <header className="mb-10 border-b border-[#0B3D2E]/20 pb-6">
@@ -72,7 +72,7 @@ export default function LegalPage() {
           </div>
 
           <div className="mt-10 flex justify-start">
-            <BackToMenuButton />
+            <BackToHomeButton />
           </div>
         </div>
       </section>

@@ -7,7 +7,7 @@ A modern, responsive website built for **Vikas Giri**, a premium dining establis
 **Client:** Vikas Giri  
 **Location:** Shop No. 7, K.D Empire, Mira Road East (401107), India  
 **Website Type:** Restaurant & Franchise Portal
-**Website:** https://babujichaai.in
+**Website:** https://babujichaay.com
 
 ##  Project Overview
 
@@ -123,7 +123,7 @@ Shop No. 7, K.D Empire
 Mira Road East, 
 India  
 Contact: 9076165666  
-Website: https://babujichaai.in
+Website: https://babujichaay.com
 
 ---
 

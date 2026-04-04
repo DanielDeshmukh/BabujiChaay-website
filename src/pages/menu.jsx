@@ -28,8 +28,8 @@ const categoryIconProps = {
 };
 
 const IMAGE_ALIASES = {
-  "Babuji Regular Chaay": ["Babuji Chai [Regular, 150 ml]"],
-  "Elaichi Chaay": ["Elaichi Chai [150 ml]"],
+  "Babuji Regular Chaay": ["Babuji Chaay [Regular, 150 ml]"],
+  "Elaichi Chaay": ["Elaichi Chaay [150 ml]"],
   "Special Coffee": ["Special Coffee [200 ml]"],
   "Lemon Ice Tea": ["Lemon Ice Tea [300 ml]", "iced tea 1"],
   "Peri-Peri Burger": ["Peri Peri Burger"],
@@ -51,7 +51,7 @@ function buildImageCandidates(productName) {
   const aliasCandidates = IMAGE_ALIASES[productName] ?? [];
   const normalizedCandidates = [
     productName,
-    productName.replace("Chaay", "Chai"),
+    productName.replace("Chaay", "Chaay"),
     productName.replace("Veggi", "Veggie"),
     productName.replace("Vegitable", "Vegetable"),
     productName.replace("Peri-Peri", "Peri Peri")
@@ -270,7 +270,7 @@ export default function Menu() {
               Call to Order
             </a>
             <a
-              href="mailto:babujichai55@gmail.com?subject=Order%20Inquiry"
+              href="mailto:babujichaay55@gmail.com?subject=Order%20Inquiry"
               className="btn-secondary px-8 py-4 text-center text-base font-bold"
             >
               Email for Availability

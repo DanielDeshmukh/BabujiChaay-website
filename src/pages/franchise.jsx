@@ -165,8 +165,8 @@ export default function Franchise() {
                   </a>
                 </ContactCard>
                 <ContactCard icon={<Mail size={18} strokeWidth={1.5} className={goldIconClass} />} title="Email">
-                  <a href="mailto:babujichai55@gmail.com" className="font-semibold text-primary transition-colors hover:text-secondary">
-                    babujichai55@gmail.com
+                  <a href="mailto:babujichaay55@gmail.com" className="font-semibold text-primary transition-colors hover:text-secondary">
+                    babujichaay55@gmail.com
                   </a>
                 </ContactCard>
                 <ContactCard icon={<MapPin size={18} strokeWidth={1.5} className={goldIconClass} />} title="Location">
@@ -194,7 +194,7 @@ export default function Franchise() {
         <div className="container-max max-w-2xl">
           <h2 className="mb-6 text-4xl font-serif font-bold md:text-5xl">Ready to Explore?</h2>
           <p className="mb-8 text-lg leading-relaxed text-accent/90">
-            We believe in building long-term partnerships with dedicated individuals who share our passion for quality chai and customer satisfaction.
+            We believe in building long-term partnerships with dedicated individuals who share our passion for quality chaay and customer satisfaction.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link to="/contact" className="btn-primary text-center">

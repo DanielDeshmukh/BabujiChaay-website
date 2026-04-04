@@ -70,8 +70,8 @@ export default function Contact() {
       icon: <Mail {...cardIconProps} size={28} />,
       linkIcon: <Mail {...inlineIconProps} size={16} />,
       title: "Email",
-      details: ["babujichai55@gmail.com"],
-      link: "mailto:babujichai55@gmail.com"
+      details: ["babujichaay55@gmail.com"],
+      link: "mailto:babujichaay55@gmail.com"
     },
     {
       icon: <Clock3 {...cardIconProps} size={28} />,
@@ -234,7 +234,7 @@ export default function Contact() {
                   handcrafted beverages and delicious snacks in a warm, inviting atmosphere.
                 </p>
                 <p className="leading-relaxed text-gray-700">
-                  Whether you're a customer looking for the perfect chai experience or a potential franchise partner,
+                  Whether you're a customer looking for the perfect chaay experience or a potential franchise partner,
                   we're here to help!
                 </p>
               </div>
@@ -262,11 +262,11 @@ export default function Contact() {
                   </li>
                   <li>
                     <a
-                      href="mailto:babujichai55@gmail.com"
+                      href="mailto:babujichaay55@gmail.com"
                       className="flex items-center gap-3 transition-colors hover:text-secondary"
                     >
                       <Mail {...inlineIconProps} />
-                      Email: babujichai55@gmail.com
+                      Email: babujichaay55@gmail.com
                     </a>
                   </li>
                 </ul>
@@ -306,7 +306,7 @@ export default function Contact() {
               height="100%"
               frameBorder="0"
               title="Babuji Chaay Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.7381232814337!2d72.87165037521088!3d19.29373098195511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b03666666667%3A0x6a0c5c4e9c7c4c4!2sBabuji%20Chai!5e0!3m2!1sen!2sin!4v1700000000000"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.7381232814337!2d72.87165037521088!3d19.29373098195511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b03666666667%3A0x6a0c5c4e9c7c4c4!2sBabuji%20Chaay!5e0!3m2!1sen!2sin!4v1700000000000"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

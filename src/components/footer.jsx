@@ -64,7 +64,7 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="max-w-xs text-sm leading-relaxed text-accent/80">
-                Authentic Indian chai, premium beverages, and delicious snacks crafted with passion and quality ingredients.
+                Authentic Indian chaay, premium beverages, and delicious snacks crafted with passion and quality ingredients.
               </p>
             </div>
 
@@ -105,9 +105,9 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:babujichai55@gmail.com" className="group flex items-center gap-3 transition-colors hover:text-secondary">
+                  <a href="mailto:babujichaay55@gmail.com" className="group flex items-center gap-3 transition-colors hover:text-secondary">
                     <Mail size={18} {...goldIconProps} />
-                    <span>babujichai55@gmail.com</span>
+                    <span>babujichaay55@gmail.com</span>
                   </a>
                 </li>
               </ul>
@@ -145,7 +145,7 @@ export default function Footer() {
 
             <div className="order-1 text-center md:order-2">
               <p className="text-sm font-serif italic text-secondary/80">
-                "Brewing Happiness / Fresh chai, fresh smiles"
+                "Brewing Happiness / Fresh chaay, fresh smiles"
               </p>
             </div>
 
