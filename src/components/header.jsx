@@ -20,8 +20,8 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full bg-primary text-accent shadow-premium">
-      <div className="container-max flex items-center justify-between px-4 py-4 md:px-6">
+    <header className="sticky left-0 top-0 z-50 w-full border-b border-secondary/20 bg-primary/95 text-accent shadow-premium backdrop-blur-md">
+      <div className="container-max flex items-center justify-between px-4 py-4 md:px-6 lg:px-8">
         <Link to="/" className="group flex items-center gap-3" onClick={() => setOpen(false)}>
           <div className="relative overflow-hidden rounded-lg">
             <img
@@ -58,7 +58,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="animate-slideDown border-t border-secondary/20 bg-primary shadow-lg md:hidden">
+        <div className="animate-slideDown border-t border-secondary/20 bg-primary/95 shadow-lg backdrop-blur-md md:hidden">
           <nav className="container-max flex flex-col space-y-2 px-4 py-6">
             {navItems.map(({ href, label, icon }) => (
               <MobileNavLink
@@ -91,7 +91,7 @@ function NavLink({ href, label, icon }) {
     >
       {icon}
       {label}
-      <span className="absolute bottom-0 left-4 right-4 h-0.5 origin-center scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" />
+      <span className="absolute bottom-0 left-4 right-4 h-0.5 origin-left scale-x-0 bg-secondary transition-transform duration-300 group-hover:scale-x-100" />
     </Link>
   );
 }

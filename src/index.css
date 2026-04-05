@@ -27,6 +27,7 @@ body {
   background-color: #F1EBDC;
   color: #1a1a1a;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* ============ TYPOGRAPHY ============ */
@@ -167,7 +168,7 @@ h3 {
 }
 
 .card-premium {
-  @apply card border border-[#D6A756] border-opacity-30;
+  @apply rounded-[1.75rem] border border-[#D6A756]/25 bg-white/40 shadow-premium backdrop-blur-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-hover;
 }
 
 /* ============ SECTION STYLES ============ */
@@ -177,6 +178,19 @@ h3 {
 
 .container-max {
   @apply max-w-7xl mx-auto;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* ============ GRADIENT ============ */
