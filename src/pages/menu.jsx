@@ -270,7 +270,7 @@ export default function Menu() {
               Call to Order
             </a>
             <a
-              href="mailto:babujichaay55@gmail.com?subject=Order%20Inquiry"
+              href="mailto:babujichaay@gmail.com?subject=Order%20Inquiry"
               className="btn-secondary px-8 py-4 text-center text-base font-bold"
             >
               Email for Availability

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
@@ -11,6 +11,7 @@ import {
   Star
 } from "lucide-react";
 import icon from "../assets/icon.png";
+import ReviewSection from "../components/ReviewSection";
 import { products } from "../data/products";
 
 const productRange = [
@@ -43,6 +44,14 @@ const FEATURED_PRODUCTS = [
   { categoryKey: "burgers", name: "Veggi Classic Burger", tag: "Burger" },
   { categoryKey: "burgers", name: "Chipotle Veg Burger", tag: "Burger" },
   { categoryKey: "tea-special", name: "Honey Tulsi Black Chaay", tag: "Tea Special" }
+];
+
+const HERO_CANVAS_PRODUCTS = [
+  { name: "Babuji Regular Chaay", aliases: ["Babuji Chaay [Regular, 150 ml]"] },
+  { name: "Rose Tea", aliases: [] },
+  { name: "Black Tulsi Chaay", aliases: [] },
+  { name: "Cold Coffee", aliases: [] },
+  { name: "Veggi Classic Burger", aliases: ["Veggie Classic Burger"] }
 ];
 
 const partnerCards = [
@@ -211,6 +220,16 @@ function SignatureCard({ frame, className = "" }) {
 }
 
 export default function Home() {
+  const [activeCanvasIndex, setActiveCanvasIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveCanvasIndex((current) => (current + 1) % HERO_CANVAS_PRODUCTS.length);
+    }, 2500);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   return (
     <main className="w-full bg-accent text-primary">
       <section className="relative overflow-hidden px-4 py-24 md:px-6 lg:px-8">
@@ -250,13 +269,18 @@ export default function Home() {
 
             <PremiumCard className="animate-fadeInSlow" innerClassName="p-3 md:p-4">
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.45rem] bg-primary">
-                <SmartImage
-                  name="Babuji Signature Chaay"
-                  aliases={["Black Tulsi Chaay", "Babuji Chaay [Regular, 150 ml]"]}
-                  alt="Babuji Canvas"
-                  fallbackLabel="Babuji Canvas"
-                  className="h-full w-full object-cover"
-                />
+                {HERO_CANVAS_PRODUCTS.map((product, index) => (
+                  <SmartImage
+                    key={product.name}
+                    name={product.name}
+                    aliases={product.aliases}
+                    alt={product.name}
+                    fallbackLabel={product.name}
+                    className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
+                      index === activeCanvasIndex ? "opacity-100" : "opacity-0"
+                    }`}
+                  />
+                ))}
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,61,46,0.04),rgba(11,61,46,0.18)_38%,rgba(11,61,46,0.84)_100%)]" />
                 <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white backdrop-blur-sm">
                   Babuji Canvas
@@ -408,6 +432,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ReviewSection />
     </main>
   );
 }

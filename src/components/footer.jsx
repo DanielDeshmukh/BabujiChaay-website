@@ -105,9 +105,9 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:babujichaay55@gmail.com" className="group flex items-center gap-3 transition-colors hover:text-secondary">
+                  <a href="mailto:babujichaay@gmail.com" className="group flex items-center gap-3 transition-colors hover:text-secondary">
                     <Mail size={18} {...goldIconProps} />
-                    <span>babujichaay55@gmail.com</span>
+                    <span>babujichaay@gmail.com</span>
                   </a>
                 </li>
               </ul>
@@ -165,6 +165,12 @@ export default function Footer() {
           <div className="mt-8 text-center">
             <p className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-accent/30">
               Made with <Heart size={12} strokeWidth={1.5} className="text-[var(--gold-accent)]" /> in India
+            </p>
+          </div>
+
+          <div className="mt-5 text-center">
+            <p className="text-[10px] uppercase tracking-widest text-accent opacity-20">
+              Crafted By Daniel Deshmukh &amp; Saurabh Yadav
             </p>
           </div>
         </div>

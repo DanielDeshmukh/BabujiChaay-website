@@ -70,8 +70,8 @@ export default function Contact() {
       icon: <Mail {...cardIconProps} size={28} />,
       linkIcon: <Mail {...inlineIconProps} size={16} />,
       title: "Email",
-      details: ["babujichaay55@gmail.com"],
-      link: "mailto:babujichaay55@gmail.com"
+      details: ["babujichaay@gmail.com"],
+      link: "mailto:babujichaay@gmail.com"
     },
     {
       icon: <Clock3 {...cardIconProps} size={28} />,
@@ -262,11 +262,11 @@ export default function Contact() {
                   </li>
                   <li>
                     <a
-                      href="mailto:babujichaay55@gmail.com"
+                      href="mailto:babujichaay@gmail.com"
                       className="flex items-center gap-3 transition-colors hover:text-secondary"
                     >
                       <Mail {...inlineIconProps} />
-                      Email: babujichaay55@gmail.com
+                      Email: babujichaay@gmail.com
                     </a>
                   </li>
                 </ul>
