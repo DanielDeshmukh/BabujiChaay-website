@@ -83,7 +83,7 @@ export default function Contact() {
 
   const socialLinks = [
     { icon: <FaFacebook size={22} />, name: "Facebook", url: "https://facebook.com" },
-    { icon: <FaInstagramSquare size={22} />, name: "Instagram", url: "https://instagram.com" },
+    { icon: <FaInstagramSquare size={22} />, name: "Instagram", url: "https://www.instagram.com/babujichaay?igsh=MWcyM3gzYTBzOXIzZQ==" },
     { icon: <FaTwitter size={22} />, name: "Twitter", url: "https://twitter.com" },
     { icon: <FaYoutube size={22} />, name: "YouTube", url: "https://youtube.com" }
   ];
