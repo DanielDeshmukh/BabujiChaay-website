@@ -31,10 +31,10 @@ export default function Header() {
             />
           </div>
           <div>
-            <span className="block text-2xl font-extrabold leading-tight tracking-wider text-accent">
-              Babuji
+            <span className="block text-xl font-extrabold  leading-tight tracking-wider text-accent">
+              Babuji Chaay
             </span>
-            <span className="text-sm font-semibold text-secondary">Chaay Cafe</span>
+            <span className="text-sm font-semibold text-secondary">Brewing Happiness</span>
           </div>
         </Link>
 
