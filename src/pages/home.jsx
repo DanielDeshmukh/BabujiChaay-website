@@ -34,7 +34,7 @@ const IMAGE_ALIASES = {
 };
 
 const FEATURED_PRODUCTS = [
-  { categoryKey: "hot-beverages", name: "Babuji Regular Chaay", tag: "Hot Beverage", anchor: true },
+  { categoryKey: "hot-beverages", name: "Babuji Regular Chaay", tag: "Hot Beverage" },
   { categoryKey: "hot-beverages", name: "Rose Tea", tag: "Tea Special" },
   { categoryKey: "hot-beverages", name: "Black Tulsi Chaay", tag: "Herbal Brew" },
   { categoryKey: "cold-beverages", name: "Cold Coffee", tag: "Cold Beverage" },
@@ -67,8 +67,7 @@ const partnerCards = [
     eyebrow: "Why Partner With Us",
     title: "Premium chai culture with an accessible, repeat-visit business.",
     description:
-      "The middle card carries the focal story: trusted flavors, approachable positioning, and an identity that feels polished without feeling distant.",
-    featured: true
+      "The middle card carries the focal story: trusted flavors, approachable positioning, and an identity that feels polished without feeling distant."
   },
   {
     icon: <Rocket size={26} strokeWidth={1.7} className="text-secondary" />,
@@ -107,8 +106,7 @@ const signatureFrames = FEATURED_PRODUCTS.map((featured) => {
     name: item?.name ?? featured.name,
     tag: featured.tag,
     description: item?.description ?? "Babuji selection",
-    imageAliases: IMAGE_ALIASES[featured.name] ?? [],
-    anchor: featured.anchor ?? false
+    imageAliases: IMAGE_ALIASES[featured.name] ?? []
   };
 }).filter((item) => item.name);
 
@@ -183,10 +181,10 @@ function RangePill({ value, label }) {
 function SignatureCard({ frame, className = "" }) {
   return (
     <article
-      className={`card-premium group shrink-0 snap-start overflow-hidden ${frame.anchor ? "h-[30rem] md:h-[33rem]" : "h-[28rem] md:h-[31rem]"} ${className}`}
+      className={`card-premium group shrink-0 snap-start overflow-hidden h-[31rem] ${className}`}
     >
-      <div className="flex h-full flex-col overflow-hidden rounded-[calc(1.75rem-1px)] bg-white/65">
-        <div className="relative h-[70%] overflow-hidden">
+      <div className="flex h-full flex-col overflow-hidden rounded-[calc(1.75rem-1px)] bg-white">
+        <div className="relative h-[65%] overflow-hidden">
           <SmartImage
             name={frame.name}
             aliases={frame.imageAliases}
@@ -205,14 +203,11 @@ function SignatureCard({ frame, className = "" }) {
               <Sparkles size={12} strokeWidth={1.8} />
               Selection
             </span>
-            <h3 className="mt-3 text-xl font-bold leading-tight text-white text-balance">{frame.name}</h3>
-            <p className="mt-1 text-sm text-white/80">{frame.description}</p>
           </div>
         </div>
-        <div className="flex flex-1 items-center px-4 py-4">
-          <p className="text-sm leading-7 text-primary/72">
-            Crafted to feel polished, readable, and easy to browse at a glance.
-          </p>
+        <div className="flex flex-1 flex-col justify-center px-4 py-4">
+          <h3 className="text-xl font-bold leading-tight text-primary text-balance">{frame.name}</h3>
+          <p className="mt-2 text-sm leading-7 text-primary/72">{frame.description}</p>
         </div>
       </div>
     </article>
@@ -268,7 +263,7 @@ export default function Home() {
             </PremiumCard>
 
             <PremiumCard className="animate-fadeInSlow" innerClassName="p-3 md:p-4">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.45rem] bg-primary">
+              <div className="relative aspect-[4/4] overflow-hidden rounded-[1.45rem] bg-primary">
                 {HERO_CANVAS_PRODUCTS.map((product, index) => (
                   <SmartImage
                     key={product.name}
@@ -284,17 +279,6 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,61,46,0.04),rgba(11,61,46,0.18)_38%,rgba(11,61,46,0.84)_100%)]" />
                 <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-white backdrop-blur-sm">
                   Babuji Canvas
-                </div>
-                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-secondary">
-                    Signature Visuals
-                  </p>
-                  <h2 className="mt-3 text-3xl font-bold text-white text-balance md:text-4xl">
-                    Babuji Signature Chaay
-                  </h2>
-                  <p className="mt-3 max-w-md text-sm leading-relaxed text-white/78">
-                    A high-aspect premium frame with reliable fallback handling and cleaner crop control.
-                  </p>
                 </div>
               </div>
             </PremiumCard>
@@ -367,12 +351,12 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-3 lg:items-start">
+          <div className="grid gap-6 lg:grid-cols-3">
             {partnerCards.map((card) => (
               <PremiumCard
                 key={card.title}
-                className={card.featured ? "lg:translate-y-6" : ""}
-                innerClassName={`p-6 md:p-8 ${card.featured ? "min-h-[24rem]" : "min-h-[21rem]"}`}
+                className="h-full"
+                innerClassName="flex h-full min-h-[22rem] flex-col p-6 md:p-8"
               >
                 <div className="rounded-2xl border border-secondary/20 bg-secondary/10 p-3 w-fit">
                   {card.icon}
