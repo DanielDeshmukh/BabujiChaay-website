@@ -156,19 +156,6 @@ function ProductCard({ item, categoryName }) {
             {item.description}
           </p>
         </div>
-        {/* <div className="mt-auto flex items-end justify-between gap-3 border-t border-secondary/10 pt-4">
-          <div className="min-w-0">
-            <p className="text-xs uppercase tracking-[0.28em] text-gray-500">
-              Crafted Price
-            </p>
-            <p className="truncate text-lg font-semibold text-[#9B6B12]">{formatPrice(item)}</p>
-          </div>
-          {item.variants?.length ? (
-            <span className="shrink-0 rounded-full bg-accent px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-              {item.variants.length} sizes
-            </span>
-          ) : null}
-        </div> */}
       </div>
     </article>
   );
