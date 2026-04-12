@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { LoaderCircle, Mail, MessageSquareText, Star, User } from "lucide-react";
 import supabase from "@/supabase/supabaseClient";
 
-const MAX_WORDS = 20;
+const MAX_WORDS = 50;
 
 function countWords(value) {
   return value.trim() ? value.trim().split(/\s+/).length : 0;
