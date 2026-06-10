@@ -1,3 +1,5 @@
+⭐ If this helped you build a clean client-facing restaurant site — a star helps other devs find it. Takes 2 seconds.
+
 # Babuji Chaay - Restaurant Website
 
 A modern, responsive website built for **Vikas Giri**, a premium dining establishment. This project showcases a clean and professional online presence with product listings, franchise information, and customer contact capabilities.
